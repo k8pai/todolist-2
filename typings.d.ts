@@ -6,3 +6,5 @@ export type Task = {
 	created_at: number;
 	completed: boolean;
 };
+
+export type Filters = 'all' | 'completed' | 'uncompleted';

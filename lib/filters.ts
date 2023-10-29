@@ -1,16 +1,16 @@
 export const filters = [
 	{
-		key: 'All',
+		key: 'all',
 		name: 'All',
 		value: 'all',
 	},
 	{
-		key: 'Completed',
+		key: 'completed',
 		name: 'Completed',
 		value: 'completed',
 	},
 	{
-		key: 'Uncompleted',
+		key: 'uncompleted',
 		name: 'Uncompleted',
 		value: 'uncompleted',
 	},

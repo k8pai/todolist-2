@@ -1,7 +1,7 @@
 'use client';
 
 import { getTodos, putTodos } from '@/lib/client';
-import { Task } from '@/typings';
+import { Filters, Task } from '@/typings';
 import {
 	Button,
 	Card,
@@ -43,19 +43,37 @@ const TaskCard = ({ id, completed, created_at, task }: Task) => {
 const Tasks = ({
 	data,
 	error,
+	filter,
 	deleteTodo,
 }: {
 	data: Task[];
 	error: string | unknown;
+	filter: Filters;
 	deleteTodo: ({ id, task }: Pick<Task, 'id' | 'task'>) => void;
 }) => {
 	if (error) {
 		console.log('error occured while fetching => ', error);
 	}
+	console.log('filter => ', filter);
 
+	let tasks = [],
+		heading = 'Tasks';
+
+	if (filter === 'all') {
+		tasks = data;
+	} else if (filter === 'completed') {
+		heading = 'Completed Tasks';
+		tasks = data.filter((task) => task.completed);
+	} else {
+		heading = 'To Be Done';
+		tasks = data.filter((task) => !task.completed);
+	}
 	return (
-		<div className="max-w-7xl w-full mx-auto mt-20">
-			{data.map((task, _) => {
+		<div className="max-w-7xl w-full mx-auto mt-10">
+			<h2 className="max-w-lg rounded-md text-xl font-semibold w-full mx-auto my-4">
+				{heading}
+			</h2>
+			{tasks.map((task, _) => {
 				return (
 					<Card
 						key={task.id}
@@ -65,7 +83,10 @@ const Tasks = ({
 							<TaskCard {...task} />
 							<MdDelete
 								onClick={() =>
-									deleteTodo({ id: task.id, task: task.task })
+									deleteTodo({
+										id: task.id,
+										task: task.task,
+									})
 								}
 								className={`fill-red-500`}
 							/>
