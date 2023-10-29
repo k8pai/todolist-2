@@ -20,4 +20,58 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-(find . -type d -name 'app' -prune -o -type d -name 'components' -prune -o -type d -name 'lib' -prune -o -type d -name 'public' -prune -o -type f -print; find . -type f -o -type l) | tree -i --fromfile
+## Project Structure
+
+```bash
+- app
+  - api
+	- tasks
+	  - route.ts
+	  - [id]
+	  	-route.ts
+  - layout.tsx
+  - index.tsx
+  - Favicon.ico
+  - global.css
+- public
+  - ...
+- lib
+  - client
+	- getTodos.ts
+	- deleteTodos.ts
+	- index.ts
+	- ...
+  - server
+	- index.ts
+- components
+  - Header.tsx
+  - Footer.tsx
+- README.md
+- ...
+```
+
+-   `app`: This is the root directory of your Next.js application.
+
+    -   `api`: This directory is used to define API routes.
+
+        -   `tasks`: This subdirectory seems to contain API routes related to tasks.
+
+            -   `route.ts`: This file defines API routes for tasks.
+
+            -   `[id]`: This is likely a dynamic route where `id` can be any value.
+
+                -   `route.ts`: This file handles routes that involve a specific task ID.
+
+    -   `layout.tsx`: This file contains the layout component(s) that are shared across different pages of your application.
+
+    -   `index.tsx`: This is the main entry point of your application, representing the homepage or root page.
+
+    -   `Favicon.ico`: This is the favicon icon for your website.
+
+    -   `global.css`: This is a global CSS file that contains styles applied throughout the application.
+
+-   `public`: This directory is used for serving static assets like images, fonts, etc.
+
+-   `lib`: This directory contain utility code or libraries that are used in the application.
+
+-   `components`: This directory contains reusable components used across different pages of your application.
