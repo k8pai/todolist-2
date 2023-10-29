@@ -15,32 +15,11 @@ export async function GET(request: Request) {
 	}
 }
 
-// export async function POST(request: Request) {
-// 	try {
-// 		let todos =
-// 			JSON.parse(localStorage.getItem(localStorageKey) || '[]') || [];
-// 		console.log('todos => ', todos);
-// 		const data = await request.json();
-// 		console.log('data => ', data);
-
-// 		const updatedData = [data, ...todos];
-// 		console.log('updatedData => ', updatedData);
-
-// 		localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
-
-// 		return Response.json({ data, status: 'success' });
-// 	} catch (error) {
-// 		return Response.json({ error, status: 'failed' });
-// 	}
-// }
-
 export async function POST(request: Request) {
 	try {
 		const data = await request.json();
 
-		console.log('data => ', data);
 		const res = postTodos(data);
-		console.log('res => ', res);
 
 		return Response.json({ data, status: 'success' });
 	} catch (error) {

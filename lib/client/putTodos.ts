@@ -22,10 +22,6 @@ export const putTodos = ({ id, completed }: Pick<Task, 'id' | 'completed'>) => {
 		return task;
 	});
 
-	console.log(
-		'updatedData => ',
-		storeData.find((task) => task.id === id),
-	);
 	localStorage.setItem(localStorageKey, JSON.stringify(updatedData));
 	return { data: updatedData.find((task) => task.id === id), error: null };
 };
