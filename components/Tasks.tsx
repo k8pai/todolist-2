@@ -54,7 +54,6 @@ const Tasks = ({
 	if (error) {
 		console.log('error occured while fetching => ', error);
 	}
-	console.log('filter => ', filter);
 
 	let tasks = [],
 		heading = 'Tasks';
@@ -69,31 +68,33 @@ const Tasks = ({
 		tasks = data.filter((task) => !task.completed);
 	}
 	return (
-		<div className="max-w-7xl w-full mx-auto mt-10">
-			<h2 className="max-w-lg rounded-md text-xl font-semibold w-full mx-auto my-4">
+		<div className="max-w-3xl w-full mx-auto mt-10">
+			<h2 className="rounded-md text-xl font-semibold m-2 md:m-4">
 				{heading}
 			</h2>
-			{tasks.map((task, _) => {
-				return (
-					<Card
-						key={task.id}
-						className="max-w-lg rounded-md bg-foreground-900 w-full mx-auto my-2"
-					>
-						<CardBody className="p-2 px-3 w-full flex flex-row items-center justify-between">
-							<TaskCard {...task} />
-							<MdDelete
-								onClick={() =>
-									deleteTodo({
-										id: task.id,
-										task: task.task,
-									})
-								}
-								className={`fill-red-500`}
-							/>
-						</CardBody>
-					</Card>
-				);
-			})}
+			<div className="m-2 md:mx-4">
+				{tasks.map((task, _) => {
+					return (
+						<Card
+							key={task.id}
+							className="max-w-3xl rounded-md bg-foreground-900 w-full my-2"
+						>
+							<CardBody className="p-2 px-3 w-full flex flex-row items-center justify-between">
+								<TaskCard {...task} />
+								<MdDelete
+									onClick={() =>
+										deleteTodo({
+											id: task.id,
+											task: task.task,
+										})
+									}
+									className={`fill-red-500`}
+								/>
+							</CardBody>
+						</Card>
+					);
+				})}
+			</div>
 		</div>
 	);
 };

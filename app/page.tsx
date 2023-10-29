@@ -70,7 +70,7 @@ export default function Home() {
 		<div className={`flex flex-col justify-start items-center mt-20`}>
 			<form
 				onSubmit={addTask}
-				className="flex flex-col space-y-10 md:space-y-0 md:flex-row items-center justify-between max-w-7xl w-full mx-auto"
+				className="flex flex-col space-y-10 md:space-y-0 md:flex-row items-center justify-center space-x-5 max-w-7xl w-full mx-auto"
 			>
 				<Input
 					isClearable
@@ -88,7 +88,7 @@ export default function Home() {
 					}}
 				/>
 				<Select
-					className="bg-foreground-900 max-w-xs w-full"
+					className="bg-foreground-900 max-w-xs w-full mx-2 md:mx-0"
 					variant="bordered"
 					size="sm"
 					color={'default'}
@@ -96,7 +96,8 @@ export default function Home() {
 					label="filter"
 					classNames={{
 						base: 'rounded-md hover:border-foreground-500 max-w-sm',
-						mainWrapper: 'hover:border-foreground-500',
+						mainWrapper:
+							'hover:border-foreground-500 border-transparent group-data-[focus=true]:border-white',
 						listboxWrapper:
 							'bg-foreground-900 border-transparent group-data-[focus=true]:border-white bg-zinc-900',
 						listbox:
